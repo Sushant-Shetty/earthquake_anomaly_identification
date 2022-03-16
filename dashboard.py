@@ -12,6 +12,7 @@ st.write('Selected window size:', window_size)
 
 df = pd.read_csv("2_year_data_30min.csv")
 data = df['Radon']
+print(data)
 look_back = 0
 if window_size == 1: look_back = 48
 elif window_size == 2: look_back = 96
