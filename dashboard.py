@@ -12,8 +12,7 @@ window_size = st.selectbox('Please select Window Size', (1, 2))
 st.write('Selected window size:', window_size)
 
 df = pd.read_csv("2_year_data_30min.csv")
-data = df['Radon']
-print(data)
+data = df[['Radon']]
 look_back = 0
 if window_size == 1: look_back = 48
 elif window_size == 2: look_back = 96
@@ -29,7 +28,7 @@ while True:
     
     plotting_row.append(index)
     data_to_be_loaded = data.iloc[index:look_back]
-    data_to_be_loaded = np.reshape(data_to_be_loaded[0], 1, data_to_be_loaded.shape[1])
+    data_to_be_loaded = np.reshape(data_to_be_loaded, (data_to_be_loaded[0], 1, data_to_be_loaded.shape[1]))
 #     with open("2_year_data_30_min.csv") as data_file:
 #       reader = csv.reader(data_file)
 #       data_to_be_loaded = [data_row for idx, data_row in enumerate(reader) if idx == index]
