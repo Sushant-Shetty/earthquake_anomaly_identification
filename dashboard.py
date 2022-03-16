@@ -43,10 +43,11 @@ while True:
     loaded_model = model_from_json(loaded_model_json)
     loaded_model.load_weights(f"model_{window_size}.h5")
     prediction = loaded_model.predict(data_to_be_loaded)
+#     prediction = 
     plotting_data.append(prediction)
   
     st.subheader("Predicted radon values")
-    st.write('Selected window size:', type(plotting_data))
+    st.write('Selected window size:', prediction)
     st.write('Selected window size:', type(plotting_row))
     st.line_chart(pd.DataFrame(pd.DataFrame(plotting_data), pd.DataFrame(plotting_row)))
   
