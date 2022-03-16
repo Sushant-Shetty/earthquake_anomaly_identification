@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
-def graph():
-  
+def graph(X, Y):
+  plt.plot(X, Y, label = "Predicted radon values")
   
   
   plt.xlim([0, 100])
