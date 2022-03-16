@@ -26,7 +26,7 @@ while True:
   temp_time = time.time()
   if abs(now - temp_time) >= 10:
     
-    plotting_row.append(index.tolist())
+    plotting_row.append(index)
     data_to_be_loaded = data.iloc[index:look_back]
     data_to_be_loaded = data_to_be_loaded.T
     data_to_be_loaded = data_to_be_loaded.to_numpy()
