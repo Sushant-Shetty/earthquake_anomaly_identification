@@ -27,7 +27,7 @@ while True:
   if abs(now - temp_time) >= 10:
     
     plotting_row.append(index)
-    data_to_be_loaded = data.iloc[index:look_back]
+    data_to_be_loaded = data.iloc[[index:look_back]]
     data_to_be_loaded = np.reshape(data_to_be_loaded[0], 1, data_to_be_loaded.shape[1])
 #     with open("2_year_data_30_min.csv") as data_file:
 #       reader = csv.reader(data_file)
