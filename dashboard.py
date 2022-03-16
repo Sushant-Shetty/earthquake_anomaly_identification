@@ -2,7 +2,7 @@ import streamlit as st
 import time 
 import csv
 from keras.models import model_from_json
-import plot
+import matplotlib.pyplot as plt
 
 st.title("Earthquake Anomaly Detection using Delegated Regressors")
 
