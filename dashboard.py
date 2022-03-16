@@ -47,9 +47,9 @@ while True:
     plotting_data.append(prediction)
   
     st.subheader("Predicted radon values")
-    st.write('Selected window size:', type(prediction))
-    st.write('Selected window size:', prediction.shape)
-    st.line_chart(pd.DataFrame(pd.DataFrame(plotting_data), pd.DataFrame(plotting_row)))
+    st.write('Selected window size:', plotting_data)
+    st.write('Selected window size:', plotting_data)
+#     st.line_chart(pd.DataFrame(pd.DataFrame(plotting_data), pd.DataFrame(plotting_row)))
   
   
       
