@@ -2,6 +2,7 @@ import streamlit as st
 import time 
 import csv
 from keras.models import model_from_json
+import plot
 
 st.title("Earthquake Anomaly Detection using Delegated Regressors")
 
@@ -10,6 +11,7 @@ st.write('Selected window size:', window_size)
 
 now = time.time()
 row = 0
+plotting_data = []
 
 while True:
   temp_time = time.time()
@@ -24,6 +26,9 @@ while True:
   loaded_model = model_from_json(loaded_model_json)
   loaded_model.load_weights(f"model_{window_size}.h5")
   prediction = loaded_model.predict(data_to_be_loaded)
+  plotting_data.append(prediction)
+  pl
+  
       
     
   
