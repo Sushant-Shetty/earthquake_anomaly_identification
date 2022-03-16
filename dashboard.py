@@ -13,6 +13,7 @@ now = time.time()
 index = 0
 plotting_data = []
 plotting_row = []
+data_to_be_loaded = []
 
 while True:
   temp_time = time.time()
