@@ -13,9 +13,8 @@ st.write('Selected window size:', window_size)
 df = pd.read_csv("2_year_data_30min.csv")
 data = df['Radon']
 look_back = 0
-if window_size == 1: data = data.iloc[:48]
-elif window_size == 2: data = data.iloc[:96]
-
+if window_size == 1: look_back = 48
+elif window_size == 2: look_back = 96
 
 now = time.time()
 plotting_data = []
@@ -25,11 +24,14 @@ index = 0
 while True:
   temp_time = time.time()
   if abs(now - temp_time) >= 10:
+    
     plotting_row.append(index)
+    data_to_be_loaded = data[index:look_back]
 #     with open("2_year_data_30_min.csv") as data_file:
 #       reader = csv.reader(data_file)
 #       data_to_be_loaded = [data_row for idx, data_row in enumerate(reader) if idx == index]
     index += 1
+    look_back += 1
   
     json_file = open(f'model_{window_size}.json', 'r')
     loaded_model_json = json_file.read()
