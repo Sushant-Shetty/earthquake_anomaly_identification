@@ -10,7 +10,7 @@ st.title("Earthquake Anomaly Detection using Delegated Regressors")
 window_size = st.selectbox('Please select Window Size', (1, 2))
 st.write('Selected window size:', window_size)
 
-df = pd.read_csv("2_year_data_30_min.csv")
+df = pd.read_csv("2_year_data_30min.csv")
 data = df['Radon']
 look_back = 0
 if window_size == 1: data = data.iloc[:48]
