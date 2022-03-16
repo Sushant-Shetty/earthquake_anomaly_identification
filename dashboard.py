@@ -48,7 +48,7 @@ while True:
     st.subheader("Predicted radon values")
     st.write('Selected window size:', type(plotting_data))
     st.write('Selected window size:', type(plotting_row))
-    st.line_chart(pd.DataFrame(plotting_data, plotting_row))
+    st.line_chart(pd.DataFrame(pd.DataFrame(plotting_data), pd.DataFrame(plotting_row)))
   
   
       
