@@ -26,7 +26,7 @@ while True:
   temp_time = time.time()
   if abs(now - temp_time) >= 10:
     
-    plotting_row.append(index)
+    plotting_row.append(index.tolist())
     data_to_be_loaded = data.iloc[index:look_back]
     data_to_be_loaded = data_to_be_loaded.T
     data_to_be_loaded = data_to_be_loaded.to_numpy()
@@ -44,7 +44,7 @@ while True:
     loaded_model.load_weights(f"model_{window_size}.h5")
     prediction = loaded_model.predict(data_to_be_loaded)
 #     prediction = 
-    plotting_data.append(prediction)
+    plotting_data.append(prediction.tolist())
   
     st.subheader("Predicted radon values")
     st.write('Selected window size:', plotting_data)
