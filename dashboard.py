@@ -39,7 +39,7 @@ if st.button('Fetch data'):
 #   prediction = prediction.tolist()
   st.session_state.plotting_data.append(prediction)
   st.session_state.plotting_data = (np.array(st.session_state.plotting_data)).reshape(-1,)
-  st.session_state.plotting_data.tolist()
+  st.session_state.plotting_data = st.session_state.plotting_data.tolist()
   
   
 st.subheader("Predicted radon values")
