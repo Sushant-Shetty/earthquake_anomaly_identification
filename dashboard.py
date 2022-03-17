@@ -27,6 +27,11 @@ if 'index' not in st.session_state and 'look_back' not in st.session_state and '
  if window_size == 1: st.session_state.look_back = 48
  elif window_size == 2: st.session_state.look_back = 96
 
+if 'look_back' in st.session_state:
+ if window_size == 1: st.session_state.look_back = 48
+ elif window_size == 2: st.session_state.look_back = 96
+
+  
 if st.button('Fetch data'):
   st.session_state.plotting_row.append(st.session_state.index)
   
