@@ -10,9 +10,11 @@ plotting_data = []
 plotting_row = []
 index = 0
 look_back = 0
+ 
 
 df = pd.read_csv("2_year_data_30min.csv")
 data = df[['Radon']]
+prediction = data.mean()
 
 st.title("Earthquake Anomaly Detection using LSTM")
 window_size = st.selectbox('Please select Window Size', (1, 2))
