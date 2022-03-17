@@ -40,7 +40,7 @@ if st.button('Fetch data'):
   
   
 st.subheader("Predicted radon values")
-st.write('Selected window size:', to_list(to_numpy(st.session_state.plotting_data).reshape(-1,))))
+st.write('Selected window size:', to_list(to_numpy(st.session_state.plotting_data).reshape(-1,))
 st.write('Selected window size:', len(st.session_state.plotting_row))
 
 fig, ax = plt.subplots(figsize = (30, 12))
