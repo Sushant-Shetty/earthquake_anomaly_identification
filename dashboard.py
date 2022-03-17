@@ -5,6 +5,7 @@ from keras.models import model_from_json
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
  
 df = pd.read_csv("2_year_data_30min.csv")
 data = df[['Radon']]
@@ -40,7 +41,11 @@ if st.button('Fetch data'):
 st.subheader("Predicted radon values")
 st.write('Selected window size:', type(st.session_state.plotting_data))
 st.write('Selected window size:', type(st.session_state.plotting_row))
-st.line_chart(pd.DataFrame(st.session_state.plotting_data, st.session_state.plotting_row))
+
+fig, ax = plt.subplots(figsize = (30, 12))
+ax.plot(st.session_state.plotting_data, st.session_state.plotting_row)
+
+st.pyplot(fig)
   
   
   
