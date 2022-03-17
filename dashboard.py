@@ -5,9 +5,6 @@ from keras.models import model_from_json
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-
-plotting_data = []
-plotting_row = []
  
 df = pd.read_csv("2_year_data_30min.csv")
 data = df[['Radon']]
@@ -18,13 +15,15 @@ window_size = st.selectbox('Please select Window Size', (1, 2))
 st.write('Selected window size:', window_size)
 
 
-if 'index' not in st.session_state and 'look_back' not in st.session_state:
+if 'index' not in st.session_state and 'look_back' not in st.session_state and 'plotting_row' not in st.session_state and 'plotting_data' not in st.session_state:
  st.session_state.index = 0
+ st.session_state.plotting_data = []
+ st.session_state.plotting_row = []
  if window_size == 1: st.session_state.look_back = 48
  elif window_size == 2: st.session_state.look_back = 96
 
 if st.button('Fetch data'):
-  plotting_row.append(st.session_state.index)
+  st.session_state.plotting_row.append(st.session_state.index)
   data_to_be_loaded = (data.iloc[st.session_state.index:st.session_state.look_back].T).to_numpy()
   data_to_be_loaded = np.reshape(data_to_be_loaded, (data_to_be_loaded.shape[0], 1, data_to_be_loaded.shape[1]))
   st.session_state.index += 1
@@ -35,12 +34,12 @@ if st.button('Fetch data'):
   loaded_model = model_from_json(loaded_model_json)
   loaded_model.load_weights(f"model_{window_size}.h5")
   prediction = loaded_model.predict(data_to_be_loaded)
-  plotting_data.append(prediction)
+  st.session_state.plotting_data.append(prediction)
   
   
 st.subheader("Predicted radon values")
 st.write('Selected window size:', st.session_state.index)
-st.write('Selected window size:', plotting_row)
+st.write('Selected window size:', st.session_state.plotting_row)
 # st.line_chart(pd.DataFrame(pd.DataFrame(plotting_data), pd.DataFrame(plotting_row)))
   
   
