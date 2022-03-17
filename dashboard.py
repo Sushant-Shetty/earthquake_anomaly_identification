@@ -25,6 +25,7 @@ if 'index' not in st.session_state and 'look_back' not in st.session_state and '
 
 if st.button('Fetch data'):
   st.session_state.plotting_row.append(st.session_state.index)
+  
   data_to_be_loaded = (data.iloc[st.session_state.index:st.session_state.look_back].T).to_numpy()
   data_to_be_loaded = np.reshape(data_to_be_loaded, (data_to_be_loaded.shape[0], 1, data_to_be_loaded.shape[1]))
   st.session_state.index += 1
@@ -37,10 +38,11 @@ if st.button('Fetch data'):
   prediction = loaded_model.predict(data_to_be_loaded).reshape(1,1)
 #   prediction = prediction.tolist()
   st.session_state.plotting_data.append(prediction)
+  st.session_state.plotting_data = (np.array(st.session_state.plotting_data)).reshape(-1,)
   
   
 st.subheader("Predicted radon values")
-st.write('Selected window size:', to_list(to_numpy(st.session_state.plotting_data).reshape(-1,))
+st.write('Selected window size:', st.session_state.plotting_data)
 st.write('Selected window size:', len(st.session_state.plotting_row))
 
 fig, ax = plt.subplots(figsize = (30, 12))
