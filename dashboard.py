@@ -34,7 +34,7 @@ if st.button('Fetch data'):
   json_file.close()
   loaded_model = model_from_json(loaded_model_json)
   loaded_model.load_weights(f"model_{window_size}.h5")
-  prediction = loaded_model.predict(data_to_be_loaded)
+  prediction = loaded_model.predict(data_to_be_loaded).reshape()
   prediction = prediction.tolist()
   st.session_state.plotting_data.append(prediction)
   
