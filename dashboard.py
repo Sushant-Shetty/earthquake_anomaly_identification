@@ -28,8 +28,8 @@ if 'index' not in st.session_state and 'look_back' not in st.session_state and '
  elif window_size == 2: st.session_state.look_back = 96
 
 if 'look_back' in st.session_state:
- if window_size == 1: st.session_state.look_back = 48
- elif window_size == 2: st.session_state.look_back = 96
+ st.session_state.look_back += 1
+ st.session_state.look_back += 1
 
   
 if st.button('Fetch data'):
