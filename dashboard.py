@@ -8,12 +8,7 @@ import numpy as np
 
 plotting_data = []
 plotting_row = []
-
-if 'index' not in st.session_state and 'look_back' not in st.session_state:
- st.session_state.index = 0
- st.session_state.look_back = 0
  
-
 df = pd.read_csv("2_year_data_30min.csv")
 data = df[['Radon']]
 prediction = data.mean()
@@ -22,9 +17,12 @@ st.title("Earthquake Anomaly Detection using LSTM")
 window_size = st.selectbox('Please select Window Size', (1, 2))
 st.write('Selected window size:', window_size)
 
-if window_size == 1: look_back = 48
-elif window_size == 2: look_back = 96
-  
+
+if 'index' not in st.session_state and 'look_back' not in st.session_state:
+ st.session_state.index = 0
+ if window_size == 1: st.session_state.look_back = 48
+ elif window_size == 2: st.session_state.look_back = 96
+
 if st.button('Fetch data'):
   plotting_row.append(st.session_state.index)
   data_to_be_loaded = (data.iloc[st.session_state.index:st.session_state.look_back].T).to_numpy()
