@@ -10,6 +10,8 @@ from sklearn.preprocessing import MinMaxScaler
  
 df = pd.read_csv("2_year_data_30min.csv")
 data = df[['Radon']]
+scaler = MinMaxScaler(feature_range=(0,1))
+data = scaler.fit_transform(data)
 prediction = data.mean()
 
 st.title("Earthquake Anomaly Detection using LSTM")
@@ -28,8 +30,6 @@ if st.button('Fetch data'):
   st.session_state.plotting_row.append(st.session_state.index)
   
   data_to_be_loaded = (data.iloc[st.session_state.index:st.session_state.look_back].T).to_numpy()
-  scaler = MinMaxScaler(feature_range=(0, 1))
-  data_to_be_loaded = scaler.fit_transform(data_to_be_loaded)
   data_to_be_loaded = np.reshape(data_to_be_loaded, (data_to_be_loaded.shape[0], 1, data_to_be_loaded.shape[1]))
   st.session_state.index += 1
   st.session_state.look_back += 1
