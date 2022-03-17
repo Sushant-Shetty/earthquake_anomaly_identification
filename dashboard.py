@@ -10,7 +10,7 @@ plotting_data = []
 plotting_row = []
 
 if 'index' not in st.session_state:
- st.session_state_index = 0
+ st.session_state.index = 0
 look_back = 0
  
 
