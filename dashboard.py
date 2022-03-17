@@ -12,7 +12,7 @@ df = pd.read_csv("2_year_data_30min.csv")
 data = df[['Radon']]
 scaler = MinMaxScaler(feature_range=(0,1))
 data = scaler.fit_transform(data)
-data = pd.Series(data)
+data = pd.DataFrame(data)
 prediction = data.mean()
 
 st.title("Earthquake Anomaly Detection using LSTM")
