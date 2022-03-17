@@ -8,7 +8,9 @@ import numpy as np
 
 plotting_data = []
 plotting_row = []
-st.session_state_index = 0
+
+if 'index' not in st.session_state:
+ st.session_state_index = 0
 look_back = 0
  
 
