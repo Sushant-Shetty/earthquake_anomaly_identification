@@ -9,7 +9,7 @@ import numpy as np
 plotting_data = []
 plotting_row = []
 
-if 'index' not in st.session_state:
+if 'index' not in st.session_state and 'look_back' not in st.session_state:
  st.session_state.index = 0
  st.session_state.look_back = 0
  
