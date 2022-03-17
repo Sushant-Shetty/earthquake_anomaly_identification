@@ -16,7 +16,7 @@ data = pd.DataFrame(data)
 prediction = data.mean()
 
 st.title("Earthquake Anomaly Detection using LSTM")
-window_size = st.selectbox('Please select Window Size', (1, 2))
+window_size = st.selectbox('Please select Window Size', (2))
 st.write('Selected window size:', window_size)
 
 
