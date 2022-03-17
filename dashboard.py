@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-st.title("Earthquake Anomaly Detection using Delegated Regressors")
+st.title("Earthquake Anomaly Detection using LSTM")
 
 window_size = st.selectbox('Please select Window Size', (1, 2))
 st.write('Selected window size:', window_size)
@@ -46,10 +46,10 @@ while True:
 #     prediction = 
     plotting_data.append(prediction.tolist())
   
-    st.subheader("Predicted radon values")
-    st.write('Selected window size:', plotting_data)
-    st.write('Selected window size:', plotting_row)
-#     st.line_chart(pd.DataFrame(pd.DataFrame(plotting_data), pd.DataFrame(plotting_row)))
+st.subheader("Predicted radon values")
+st.write('Selected window size:', type(prediction))
+st.write('Selected window size:', type(plotting_row))
+st.line_chart(pd.DataFrame(pd.DataFrame(plotting_data), pd.DataFrame(plotting_row)))
   
   
       
