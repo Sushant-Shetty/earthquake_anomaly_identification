@@ -24,6 +24,7 @@ if window_size == 1: look_back = 48
 elif window_size == 2: look_back = 96
   
 if st.button('Fetch data'):
+  plotting_row.append(index)
   data_to_be_loaded = (data.iloc[index:look_back].T).to_numpy()
   data_to_be_loaded = np.reshape(data_to_be_loaded, (data_to_be_loaded.shape[0], 1, data_to_be_loaded.shape[1]))
   index += 1
@@ -38,7 +39,7 @@ if st.button('Fetch data'):
   
   
 st.subheader("Predicted radon values")
-st.write('Selected window size:', prediction)
+st.write('Selected window size:', plotting_data)
 st.write('Selected window size:', plotting_row)
 # st.line_chart(pd.DataFrame(pd.DataFrame(plotting_data), pd.DataFrame(plotting_row)))
   
