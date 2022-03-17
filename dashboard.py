@@ -8,7 +8,7 @@ import numpy as np
 
 plotting_data = []
 plotting_row = []
-index = 0
+st.session_state_index = 0
 look_back = 0
  
 
@@ -27,7 +27,7 @@ if st.button('Fetch data'):
   plotting_row.append(index)
   data_to_be_loaded = (data.iloc[index:look_back].T).to_numpy()
   data_to_be_loaded = np.reshape(data_to_be_loaded, (data_to_be_loaded.shape[0], 1, data_to_be_loaded.shape[1]))
-  index += 1
+  st.session_state.index += 1
   look_back += 1
   json_file = open(f'model_{window_size}.json', 'r')
   loaded_model_json = json_file.read()
