@@ -11,7 +11,7 @@ plotting_row = []
 
 if 'index' not in st.session_state:
  st.session_state.index = 0
-look_back = 0
+ st.session_state.look_back = 0
  
 
 df = pd.read_csv("2_year_data_30min.csv")
@@ -27,10 +27,10 @@ elif window_size == 2: look_back = 96
   
 if st.button('Fetch data'):
   plotting_row.append(st.session_state.index)
-  data_to_be_loaded = (data.iloc[st.session_state.index:look_back].T).to_numpy()
+  data_to_be_loaded = (data.iloc[st.session_state.index:st.session_state.look_back].T).to_numpy()
   data_to_be_loaded = np.reshape(data_to_be_loaded, (data_to_be_loaded.shape[0], 1, data_to_be_loaded.shape[1]))
   st.session_state.index += 1
-  look_back += 1
+  st.session_state.look_back += 1
   json_file = open(f'model_{window_size}.json', 'r')
   loaded_model_json = json_file.read()
   json_file.close()
