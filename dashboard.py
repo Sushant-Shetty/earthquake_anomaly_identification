@@ -18,27 +18,27 @@ st.title("Earthquake Anomaly Detection using LSTM")
 window_size = st.selectbox('Please select Window Size', (1, 2))
 st.write('Selected window size:', window_size)
 
-if window_size == 1: look_back = 48
-elif window_size == 2: look_back = 96
+# if window_size == 1: look_back = 48
+# elif window_size == 2: look_back = 96
   
-if st.button('Fetch data'):
-  data_to_be_loaded = (data.iloc[index:look_back].T).to_numpy()
-  data_to_be_loaded = np.reshape(data_to_be_loaded, (data_to_be_loaded.shape[0], 1, data_to_be_loaded.shape[1]))
-  index += 1
-  look_back += 1
-  json_file = open(f'model_{window_size}.json', 'r')
-  loaded_model_json = json_file.read()
-  json_file.close()
-  loaded_model = model_from_json(loaded_model_json)
-  loaded_model.load_weights(f"model_{window_size}.h5")
-  prediction = loaded_model.predict(data_to_be_loaded)
-  plotting_data.append(prediction)
+# if st.button('Fetch data'):
+#   data_to_be_loaded = (data.iloc[index:look_back].T).to_numpy()
+#   data_to_be_loaded = np.reshape(data_to_be_loaded, (data_to_be_loaded.shape[0], 1, data_to_be_loaded.shape[1]))
+#   index += 1
+#   look_back += 1
+#   json_file = open(f'model_{window_size}.json', 'r')
+#   loaded_model_json = json_file.read()
+#   json_file.close()
+#   loaded_model = model_from_json(loaded_model_json)
+#   loaded_model.load_weights(f"model_{window_size}.h5")
+#   prediction = loaded_model.predict(data_to_be_loaded)
+#   plotting_data.append(prediction)
   
   
-st.subheader("Predicted radon values")
-st.write('Selected window size:', type(prediction))
-st.write('Selected window size:', type(plotting_row))
-st.line_chart(pd.DataFrame(pd.DataFrame(plotting_data), pd.DataFrame(plotting_row)))
+# st.subheader("Predicted radon values")
+# st.write('Selected window size:', type(prediction))
+# st.write('Selected window size:', type(plotting_row))
+# st.line_chart(pd.DataFrame(pd.DataFrame(plotting_data), pd.DataFrame(plotting_row)))
   
   
   
