@@ -40,7 +40,7 @@ if st.button('Fetch data'):
 st.subheader("Predicted radon values")
 st.write('Selected window size:', st.session_state.index)
 st.write('Selected window size:', st.session_state.plotting_row)
-# st.line_chart(pd.DataFrame(pd.DataFrame(plotting_data), pd.DataFrame(plotting_row)))
+st.line_chart(pd.DataFrame(pd.DataFrame(st.session_state.plotting_data, st.session_state.plotting_row)))
   
   
   
